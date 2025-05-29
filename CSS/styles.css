@@ -1,0 +1,35 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  padding: 10px;
+}
+
+/* ACTIONS */
+.actions{
+  border: 2px solid green;
+  margin-bottom: 10px;
+}
+
+/* ADD TASK */
+.input-field{
+  border: 2px solid red;
+  margin-bottom: 10px;
+}
+
+/* SCREEN */
+#screen{
+  border: 2px solid blue;
+  min-height: 30px;
+}
+
+/* TASKS */
+
+
+/* DYNAMIC */
+.hidden{
+  display: none;
+}

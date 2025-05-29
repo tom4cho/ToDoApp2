@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do App</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+    <script src="Modules/script.js" defer> </script>
+</head>
+<body>
+    <main>
+        <h1>To-do App</h1>
+        <!-- Sección de acciones en la pagina -->
+        <div class="actions">
+            <button id="sort-button">Sort</button>
+            <div id="sort-section"  class="hidden">
+                <!-- Ordenamiento alphabetico -->
+                <button id="aphabet-sort">Alphabetically</button>
+                <hr>
+                <!-- Ordenamiento por titulo -->
+                <h3>Sort by title</h3>
+                <input type="text" id="title-input" placeholder="Insert the title to find the task">
+                <button id="title-sort">Sort</button>
+                <hr>
+                <!-- Ordenamiento por status -->
+                <h3>Sort by status</h3>
+                <p>Select the status to sort: </p>
+                <form action="post">
+                    <input type="radio" name="status-btn" class="status-btn" value="undone">
+                    <input type="radio" name="status-btn" class="status-btn" value="done">
+                    <input type="radio" name="status-btn" class="status-btn" value="all">
+                    <button type="submit" id="status-sort">Sort</button>
+                </form>
+            </div>
+        </div>
+        <!-- Sección para agregar tareas -->
+        <div class="input-field">
+            <button id="task-button">Add Task</button>
+            <form action="post" id="task-form"  class="hidden">
+                <label for="task-title">Title for the task</label>
+                <input type="text" id="task-title" placeholder="Enter task title" required>
+                <label for="task-description">Description for the task</label>
+                <input type="text" id="task-description" placeholder="Enter task description" required>
+                <button type="submit">Add</button>
+            </form>
+        </div>
+        <!-- Sección donde se muestra la pantalla -->
+        <div id="screen">
+            
+        </div>
+    </main>
+</body>
+</html>
