@@ -66,9 +66,7 @@ sortButton.addEventListener("click", ()=>{
 
 /*
     Modulo encargado de administrar las tareas
-*/
 
-/*
     TO-DO:
         -Crear la función para editar táreas.
 */
@@ -116,3 +114,12 @@ function deleteTask(e) {
 function editTask(e) {
     
 }
+
+
+
+/*
+    Módulo encargado del ordenamiento de las tareas
+
+    TO-DO:
+
+*/
