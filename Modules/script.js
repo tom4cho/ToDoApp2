@@ -4,7 +4,7 @@
 /*
     TO-DO:
         -Agregar la funcionalidad edit de las tareas.
-        -Modificar los campos para hacer tareas para dar marcar la descripción 
+        -Modificar los campos para hacer tareas para marcar la descripción 
             opcional.
         -Agregar estilos iniciales a la pagina.
 
@@ -78,7 +78,7 @@ function createTask(task_data) {
                 <h3>${taskData.title}</h3>
                 <p>${taskData.description}</p>
                 <div class="task-actions">
-                    <button onclick="editTask(event)">edit</button>
+                    <button onclick="editTask(event) value="t${taskClass}"">edit</button>
                     <button onclick="deleteTask(event)" value="t${taskClass}">delete</button>
                     <select name="status" class="task-status">
                         <option value="status">status</option>
@@ -111,8 +111,23 @@ function deleteTask(e) {
                 Se modifica la tarea objetivo del evento con los datos proporcionados.
 
 */
+`
+    <div id="edit-modal" class="">
+        <form action="post">
+            <h2>Edit Task Form</h2>
+            <label for="edit-title">Title for the task</label>
+            <input type="text" id="edit-title" required>
+            <label for="edit-description">Description for the task</label>
+            <input type="text" id="edit-description" required>
+            <button id="accept-edit">Edit</button>
+            <button id="cancel-edit">Cancel</button>
+        </form>
+    </div>
+`
 function editTask(e) {
-    
+    let target = e.target
+    console.log(target)
+    document.getElementById("edit-modal").classList.toggle("hidden")
 }
 
 
