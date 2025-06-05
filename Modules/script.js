@@ -78,7 +78,7 @@ function createTask(task_data) {
                 <h3>${taskData.title}</h3>
                 <p>${taskData.description}</p>
                 <div class="task-actions">
-                    <button onclick="editTask(event) value="t${taskClass}"">edit</button>
+                    <button onclick="editTask(event)" value="t${taskClass}">edit</button>
                     <button onclick="deleteTask(event)" value="t${taskClass}">delete</button>
                     <select name="status" class="task-status">
                         <option value="status">status</option>
@@ -125,9 +125,11 @@ function deleteTask(e) {
     </div>
 `
 function editTask(e) {
-    let target = e.target
-    console.log(target)
-    document.getElementById("edit-modal").classList.toggle("hidden")
+    let element = document.getElementById(`${e.target.value}`)
+    let modal = document.getElementById("edit-modal")
+    modal.classList.toggle("hidden")
+    modal.querySelector("#edit-title").value = element.querySelector("h3").innerText
+    modal.querySelector("#edit-description").value = element.querySelector("p").innerText
 }
 
 

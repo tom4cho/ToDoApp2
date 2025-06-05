@@ -9,15 +9,15 @@
 </head>
 <body>
     <div id="overlay"></div>
-    <div id="edit-modal" class="">
+    <div id="edit-modal" class="hidden">
         <form action="post">
             <h2>Edit Task Form</h2>
             <label for="edit-title">Title for the task</label>
             <input type="text" id="edit-title" required>
             <label for="edit-description">Description for the task</label>
             <input type="text" id="edit-description" required>
-            <button id="accept-edit">Edit</button>
-            <button id="cancel-edit">Cancel</button>
+            <button onclick="acceptChanges(event)">Edit</button>
+            <button onclick="cancelChanges(event)">Cancel</button>
         </form>
     </div>
     <main>
