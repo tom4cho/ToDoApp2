@@ -112,26 +112,38 @@ function deleteTask(e) {
 
 */
 `
-    <div id="edit-modal" class="">
+    <div id="edit-modal" class="hidden">
         <form action="post">
             <h2>Edit Task Form</h2>
             <label for="edit-title">Title for the task</label>
             <input type="text" id="edit-title" required>
             <label for="edit-description">Description for the task</label>
             <input type="text" id="edit-description" required>
-            <button id="accept-edit">Edit</button>
-            <button id="cancel-edit">Cancel</button>
+            <button onclick="acceptChanges(event)">Edit</button>
+            <button onclick="cancelChanges(event)">Cancel</button>
         </form>
     </div>
 `
 function editTask(e) {
     let element = document.getElementById(`${e.target.value}`)
     let modal = document.getElementById("edit-modal")
+    let buttons = [...modal.querySelectorAll("button")]
+    buttons.forEach((button) => {
+        button.value = e.target.value
+    })
+
     modal.classList.toggle("hidden")
     modal.querySelector("#edit-title").value = element.querySelector("h3").innerText
     modal.querySelector("#edit-description").value = element.querySelector("p").innerText
 }
 
+function acceptChanges(e) {
+    
+}
+
+function cancelChanges(e) {
+    
+}
 
 
 /*
