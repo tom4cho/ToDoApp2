@@ -3,9 +3,7 @@
 */
 /*
     TO-DO:
-        -Agregar la funcionalidad edit de las tareas.
-        -Modificar los campos para hacer tareas para marcar la descripción 
-            opcional.
+        -Crear el ordenamiento por estatus.
         -Agregar estilos iniciales a la pagina.
 
 */
@@ -68,7 +66,7 @@ sortButton.addEventListener("click", ()=>{
     Modulo encargado de administrar las tareas
 
     TO-DO:
-        -Crear la función para editar táreas.
+
 */
 let taskClass = 0
 function createTask(task_data) {
@@ -81,9 +79,9 @@ function createTask(task_data) {
                     <button onclick="editTask(event)" value="t${taskClass}">edit</button>
                     <button onclick="deleteTask(event)" value="t${taskClass}">delete</button>
                     <select name="status" class="task-status">
-                        <option value="status">status</option>
-                        <option value="">pending</option>
-                        <option value="">completed</option>
+                        <option value="0">status</option>
+                        <option value="1">pending</option>
+                        <option value="2">completed</option>
                     </select>
                 </div>
             </div>
@@ -95,35 +93,6 @@ function deleteTask(e) {
     element.remove()
 }
 
-/*
-    OBJETIVO:
-        Modificar la tarea donde se presionó el botón, dados los datos del usuario.
-    CONSIDERACIONES:
-        -Se debe dar un formulario de edición al usuario.
-        -El usuario podrá escoger entre conservar o no los cambios.
-    ALGORITMO:
-        1-Recuperar el objeto evento.
-        2-Mostrar un formulario de edición basado en los datos del objetivo del evento.
-        3-Verificar
-            Si x o cancel han sido presionados.
-                Descartar los cambios hechos por el usuario.
-            Si se presiona accept
-                Se modifica la tarea objetivo del evento con los datos proporcionados.
-
-*/
-`
-    <div id="edit-modal" class="hidden">
-        <form action="post">
-            <h2>Edit Task Form</h2>
-            <label for="edit-title">Title for the task</label>
-            <input type="text" id="edit-title" required>
-            <label for="edit-description">Description for the task</label>
-            <input type="text" id="edit-description" required>
-            <button onclick="acceptChanges(event)">Accept</button>
-            <button onclick="cancelChanges(event)">Cancel</button>
-        </form>
-    </div>
-`
 function editTask(e) {
     let element = document.getElementById(`${e.target.value}`)
     let modal = document.getElementById("edit-modal")
