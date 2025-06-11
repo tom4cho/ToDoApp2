@@ -119,7 +119,7 @@ function deleteTask(e) {
             <input type="text" id="edit-title" required>
             <label for="edit-description">Description for the task</label>
             <input type="text" id="edit-description" required>
-            <button onclick="acceptChanges(event)">Edit</button>
+            <button onclick="acceptChanges(event)">Accept</button>
             <button onclick="cancelChanges(event)">Cancel</button>
         </form>
     </div>
@@ -138,11 +138,22 @@ function editTask(e) {
 }
 
 function acceptChanges(e) {
-    
+    let element = document.getElementById(`${e.target.value}`)
+    let modal = document.getElementById("edit-modal")
+
+    modal.classList.toggle("hidden")
+    element.querySelector("h3").innerText = modal.querySelector("#edit-title").value
+    element.querySelector("p").innerText = modal.querySelector("#edit-description").value
+
+    console.log(element)
 }
 
 function cancelChanges(e) {
-    
+    let modal = document.getElementById("edit-modal")
+    modal.querySelector("#edit-title").value = ""
+    modal.querySelector("#edit-description").value = ""
+    modal.classList.toggle("hidden")
+
 }
 
 
