@@ -8,6 +8,16 @@
     <script src="Modules/script.js" defer> </script>
 </head>
 <body>
+    <div id="overlay"></div>
+    <div id="edit-modal" class="hidden">
+            <h2>Edit Task Form</h2>
+            <label for="edit-title">Title for the task</label>
+            <input type="text" id="edit-title" required>
+            <label for="edit-description">Description for the task</label>
+            <input type="text" id="edit-description" required>
+            <button onclick="acceptChanges(event)">Accept</button>
+            <button onclick="cancelChanges(event)">Cancel</button>
+    </div>
     <main>
         <h1>To-do App</h1>
         <!-- Sección de acciones en la pagina -->
@@ -26,9 +36,15 @@
                 <h3>Sort by status</h3>
                 <p>Select the status to sort: </p>
                 <form action="post">
-                    <input type="radio" name="status-btn" class="status-btn" value="undone">
-                    <input type="radio" name="status-btn" class="status-btn" value="done">
-                    <input type="radio" name="status-btn" class="status-btn" value="all">
+                    <label>Status:
+                        <input type="radio" name="status-btn" class="status-btn" value="0">
+                    </label>
+                    <label>Pending:
+                        <input type="radio" name="status-btn" class="status-btn" value="1">
+                    </label>
+                    <labe>Completed:
+                        <input type="radio" name="status-btn" class="status-btn" value="2">
+                    </label>
                     <button type="submit" id="status-sort">Sort</button>
                 </form>
             </div>
