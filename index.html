@@ -36,9 +36,15 @@
                 <h3>Sort by status</h3>
                 <p>Select the status to sort: </p>
                 <form action="post">
-                    <input type="radio" name="status-btn" class="status-btn" value="undone">
-                    <input type="radio" name="status-btn" class="status-btn" value="done">
-                    <input type="radio" name="status-btn" class="status-btn" value="all">
+                    <label>Status:
+                        <input type="radio" name="status-btn" class="status-btn" value="0">
+                    </label>
+                    <label>Pending:
+                        <input type="radio" name="status-btn" class="status-btn" value="1">
+                    </label>
+                    <labe>Completed:
+                        <input type="radio" name="status-btn" class="status-btn" value="2">
+                    </label>
                     <button type="submit" id="status-sort">Sort</button>
                 </form>
             </div>
