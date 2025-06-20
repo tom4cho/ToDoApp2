@@ -4,7 +4,6 @@
 /*
     TO-DO:
         -Crear el ordenamiento por estatus.
-        -Documentar todo el código.
         -Agregar estilos iniciales a la pagina.
 
 */
@@ -15,8 +14,8 @@ const taskButton = document.getElementById("task-button")
 const sortButton = document.getElementById("sort-button")
 const alphabetSort = document.getElementById("alphabet-sort")
 const titleSort = document.getElementById("title-sort")
-const statusSort = document.getElementById("status-sort")
 const sortSection = document.getElementById("sort-section")
+const statusSort = document.getElementById("statusSort-form")
 const screen = document.getElementById("screen")
 const modal = document.getElementById("edit-modal")
 
@@ -140,11 +139,6 @@ function cancelChanges(e) {
     Módulo encargado del ordenamiento de las tareas por status, titulo y alfabeticamente.
 */
 
-// Función para redirigir los datos del formulario de ordenamiento por status
-sortSection.addEventListener("submit", (event) => {
-    event.preventDefault()
-})
-
 // Evento para manejar el display de la sección sort y el texto del botón.
 sortButton.addEventListener("click", ()=>{
     sortSection.classList.toggle("hidden")
@@ -154,3 +148,21 @@ sortButton.addEventListener("click", ()=>{
         sortButton.innerText = "Sort"
     }
 })
+
+// Función para redirigir los datos del formulario de ordenamiento por status
+statusSort.addEventListener("submit", (event) => {
+    event.preventDefault()
+    const status = document.querySelector('input[name="status-btn"]:checked')
+    console.log(status.value)
+    if (status == null || status.value == 0) {
+        alert("Selecciona un estado para continuar")
+    }
+
+    let tasks = [...document.getElementsByClassName("task")]
+
+    tasks.forEach((task) => {
+        let taskStatus = task.querySelector(".task-actions").querySelector(".task-status").value;
+        console.log(taskStatus)
+    })
+})
+
