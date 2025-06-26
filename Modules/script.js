@@ -3,8 +3,7 @@
 */
 /*
     TO-DO:
-        -Crear el ordenamiento por estatus.
-        -Agregar estilos iniciales a la pagina.
+        
 
 */
 
@@ -19,6 +18,7 @@ const statusSort = document.getElementById("statusSort-form")
 const screen = document.getElementById("screen")
 const modal = document.getElementById("edit-modal")
 
+let tasks = []
 
 // Variable para almacenar la información de la tarea.
 let taskData = {
@@ -39,7 +39,8 @@ taskForm.addEventListener("submit", (event) => {
     taskData.description = document.getElementById("task-description").value
     
     // Se llama la función createTask con taskData como argumento y se añade al html.
-    screen.innerHTML += createTask(taskData)
+    screen.insertAdjacentHTML("beforeend", createTask(taskData))
+    tasks = [...document.getElementsByClassName("task")]
 
     // Se reinician los valores de los campos del formulario.
     document.getElementById("task-description").value = ""
@@ -153,16 +154,25 @@ sortButton.addEventListener("click", ()=>{
 statusSort.addEventListener("submit", (event) => {
     event.preventDefault()
     const status = document.querySelector('input[name="status-btn"]:checked')
-    console.log(status.value)
-    if (status == null || status.value == 0) {
+
+    if (status == null ) {
         alert("Selecciona un estado para continuar")
+        return
+    } else if(status.value == 0){
+        screen.innerHTML = "";
+        tasks.forEach((task)=>{
+            screen.appendChild(task)
+        })
+        return
     }
 
-    let tasks = [...document.getElementsByClassName("task")]
+    screen.innerHTML = "";
 
     tasks.forEach((task) => {
-        let taskStatus = task.querySelector(".task-actions").querySelector(".task-status").value;
-        console.log(taskStatus)
+        let taskStatus = task.querySelector(".task-actions").querySelector(".task-status");
+        if (taskStatus.value === status.value) {
+            screen.appendChild(task)
+        }
     })
 })
 
