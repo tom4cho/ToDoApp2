@@ -3,7 +3,7 @@
 */
 /*
     TO-DO:
-        
+        -Hacer sorteo por titulo.
 
 */
 
@@ -176,3 +176,8 @@ statusSort.addEventListener("submit", (event) => {
     })
 })
 
+// Función para ordenamiento basado en título
+titleSort.addEventListener("click", (event) =>{
+    const title = document.getElementById("title-input").value.toLowerCase()
+    
+})
