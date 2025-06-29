@@ -177,7 +177,31 @@ statusSort.addEventListener("submit", (event) => {
 })
 
 // Función para ordenamiento basado en título
+/*
+    Casos a cubrir:
+        Mostrar todas las tareas que coincidan con la búsqueda.
+
+        Si ninguna tarea coincide con la búsqueda, se alerta al usuario de que no hubo coincidencias y no se modifica la pantalla.
+
+*/
 titleSort.addEventListener("click", (event) =>{
     const title = document.getElementById("title-input").value.toLowerCase()
-    
+
+    let coincidences = []
+
+    tasks.forEach((task) => {
+        const taskTitle = task.querySelector("h3").innerText.toLowerCase()
+        if (title === taskTitle) {
+            coincidences.push(task)
+        }
+    })
+
+    if (coincidences.length <= 0) {
+        alert("No hubo ninguna coincidencia")
+    } else {
+        screen.innerHTML = "";
+        coincidences.forEach((coincidence) => {
+            screen.appendChild(coincidence)
+        })
+    }
 })
