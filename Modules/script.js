@@ -3,8 +3,15 @@
 */
 /*
     TO-DO:
-        -Hacer sorteo por titulo.
+        -Corregir error:
+            Al momento de eliminar una tarea, su registro no se elimina de las tareas, por lo que al recargar todas las tareas vuelve a aparecer. 
 
+        -Hacer sorteo por titulo.
+            Documentar la función de sorteo por titulo.
+
+        -Hacer sorteo alfabetico.
+
+        -Limpiar los campos al momento de cerrar el menu de acciones.
 */
 
 // Referencias del DOM
@@ -18,6 +25,7 @@ const statusSort = document.getElementById("statusSort-form")
 const screen = document.getElementById("screen")
 const modal = document.getElementById("edit-modal")
 
+// Variable para almacenar las tareas.
 let tasks = []
 
 // Variable para almacenar la información de la tarea.
