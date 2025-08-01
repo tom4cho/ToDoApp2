@@ -35,8 +35,8 @@
                 <!-- Ordenamiento por status -->
                 <h3>Sort by status</h3>
                 <p>Select the status to sort: </p>
-                <form action="post">
-                    <label>Status:
+                <form action="script.js" id="statusSort-form">
+                    <label>All:
                         <input type="radio" name="status-btn" class="status-btn" value="0">
                     </label>
                     <label>Pending:
@@ -52,7 +52,7 @@
         <!-- Sección para agregar tareas -->
         <div class="input-field">
             <button id="task-button">Add Task</button>
-            <form action="post" id="task-form"  class="hidden">
+            <form action="post" id="task-form" class="hidden">
                 <label for="task-title">Title for the task</label>
                 <input type="text" id="task-title" placeholder="Enter task title" required>
                 <label for="task-description">Description for the task</label>

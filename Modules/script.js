@@ -3,10 +3,15 @@
 */
 /*
     TO-DO:
-        -Crear el ordenamiento por estatus.
-        -Documentar todo el código.
-        -Agregar estilos iniciales a la pagina.
+        -Corregir error:
+            Al momento de eliminar una tarea, su registro no se elimina de las tareas, por lo que al recargar todas las tareas vuelve a aparecer. 
 
+        -Hacer sorteo por titulo.
+            Documentar la función de sorteo por titulo.
+
+        -Hacer sorteo alfabetico.
+
+        -Limpiar los campos al momento de cerrar el menu de acciones.
 */
 
 // Referencias del DOM
@@ -15,11 +20,13 @@ const taskButton = document.getElementById("task-button")
 const sortButton = document.getElementById("sort-button")
 const alphabetSort = document.getElementById("alphabet-sort")
 const titleSort = document.getElementById("title-sort")
-const statusSort = document.getElementById("status-sort")
 const sortSection = document.getElementById("sort-section")
+const statusSort = document.getElementById("statusSort-form")
 const screen = document.getElementById("screen")
 const modal = document.getElementById("edit-modal")
 
+// Variable para almacenar las tareas.
+let tasks = []
 
 // Variable para almacenar la información de la tarea.
 let taskData = {
@@ -40,7 +47,8 @@ taskForm.addEventListener("submit", (event) => {
     taskData.description = document.getElementById("task-description").value
     
     // Se llama la función createTask con taskData como argumento y se añade al html.
-    screen.innerHTML += createTask(taskData)
+    screen.insertAdjacentHTML("beforeend", createTask(taskData))
+    tasks = [...document.getElementsByClassName("task")]
 
     // Se reinician los valores de los campos del formulario.
     document.getElementById("task-description").value = ""
@@ -140,11 +148,6 @@ function cancelChanges(e) {
     Módulo encargado del ordenamiento de las tareas por status, titulo y alfabeticamente.
 */
 
-// Función para redirigir los datos del formulario de ordenamiento por status
-sortSection.addEventListener("submit", (event) => {
-    event.preventDefault()
-})
-
 // Evento para manejar el display de la sección sort y el texto del botón.
 sortButton.addEventListener("click", ()=>{
     sortSection.classList.toggle("hidden")
@@ -152,5 +155,61 @@ sortButton.addEventListener("click", ()=>{
         sortButton.innerText = "Exit"
     } else {
         sortButton.innerText = "Sort"
+    }
+})
+
+// Función para redirigir los datos del formulario de ordenamiento por status
+statusSort.addEventListener("submit", (event) => {
+    event.preventDefault()
+    const status = document.querySelector('input[name="status-btn"]:checked')
+
+    if (status == null ) {
+        alert("Selecciona un estado para continuar")
+        return
+    } else if(status.value == 0){
+        screen.innerHTML = "";
+        tasks.forEach((task)=>{
+            screen.appendChild(task)
+        })
+        return
+    }
+
+    screen.innerHTML = "";
+
+    tasks.forEach((task) => {
+        let taskStatus = task.querySelector(".task-actions").querySelector(".task-status");
+        if (taskStatus.value === status.value) {
+            screen.appendChild(task)
+        }
+    })
+})
+
+// Función para ordenamiento basado en título
+/*
+    Casos a cubrir:
+        Mostrar todas las tareas que coincidan con la búsqueda.
+
+        Si ninguna tarea coincide con la búsqueda, se alerta al usuario de que no hubo coincidencias y no se modifica la pantalla.
+
+*/
+titleSort.addEventListener("click", (event) =>{
+    const title = document.getElementById("title-input").value.toLowerCase()
+
+    let coincidences = []
+
+    tasks.forEach((task) => {
+        const taskTitle = task.querySelector("h3").innerText.toLowerCase()
+        if (title === taskTitle) {
+            coincidences.push(task)
+        }
+    })
+
+    if (coincidences.length <= 0) {
+        alert("No hubo ninguna coincidencia")
+    } else {
+        screen.innerHTML = "";
+        coincidences.forEach((coincidence) => {
+            screen.appendChild(coincidence)
+        })
     }
 })
